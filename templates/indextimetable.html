@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timetable Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Timetable Generator</h1>
+        <form method="POST">
+             
+            <input type="text" name="courses" placeholder="Courses eg:Math, Physics, Chemistry" required>
+
+             
+            <input type="text" name="rooms" placeholder="Rooms eg:Room 101, Room 102" required>
+
+            
+            <input type="text" name="timeslots" placeholder="timeslots eg:Mon 9-10, Mon 10-11" required>
+
+            <button type="submit">Generate</button>
+        </form>
+
+        {% if timetable %}
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Room</th>
+                <th>Timeslot</th>
+            </tr>
+            {% for row in timetable %}
+            <tr>
+                <td>{{ row.Course }}</td>
+                <td>{{ row.Room }}</td>
+                <td>{{ row.Timeslot }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
